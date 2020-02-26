@@ -4,9 +4,6 @@ import nltk
 from nltk.corpus import stopwords
 import string
 
-# df = pd.read_csv(r'C:\Users\Alexis Hale\PycharmProjects\NLP-DC2\spam_notriplecommas.csv')   #read the csv file (put 'r' before the path string to address any special characters in the path, such as '\'). Don't forget to put the file name at the end of the path + ".csv"
-# print(df)
-
 #store the spam or ham label and actual content
 v1 = []
 v2 = []
@@ -21,8 +18,9 @@ with open('spam.csv') as csv_file:
             line_count += 1
         else:
             v1.append(row[0])
-            v2.append(row[1])
-            print(row[0], row[1])
+            del row[0]
+            v2.append(row)  # we should append everything except row[0]
+            print(v1[line_count-1], row)
             line_count += 1
 print(f'Processed {line_count} lines.')
 
