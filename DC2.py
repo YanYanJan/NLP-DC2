@@ -1,6 +1,7 @@
 import csv
 from nltk.corpus import stopwords
 import string
+from sklearn.metrics import confusion_matrix
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 
@@ -52,6 +53,7 @@ print(classification_report(y_test ,nvb_pred ))
 print('Confusion Matrix: \n',confusion_matrix(y_test,nvb_pred))
 print('Accuracy: ', accuracy_score(y_test,nvb_pred))
 
+
 print()
 print()
 
@@ -65,7 +67,7 @@ print(classification_report(y_test, svm_pred ))
 print("Confusion Matrix: \n'", confusion_matrix(y_test, svm_pred))
 print('Accuracy: ', accuracy_score(y_test, svm_pred))
 
-
+'''
 def pred(msg):
     msg = vectorizer.transform([msg])
     prediction = svm.predict(msg)
@@ -74,12 +76,10 @@ def pred(msg):
 for i in range (11):
     print (text[i],pred(text[i]))
 
+#logistic Regression
 
 #from sklearn.linear_model import LogisticRegression
 #from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-'''
-#logistic Regression
 
 Spam_model = LogisticRegression(solver='liblinear', penalty='l1')
 Spam_model.fit(x_train, y_train)
